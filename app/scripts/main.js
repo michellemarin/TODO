@@ -23,8 +23,10 @@ $('#new-todo').keypress(function(e) {
     $('#todo-list').append(todoTemplate(new Todo({
       title: $(this).val()
     })));
+    $(this).val("");
   }
 });
+
 
 $('#todo-list').on('click', 'li input.toggle', function (event) {
   $(this).closest('li').toggleClass('completed');
