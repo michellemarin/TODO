@@ -70,11 +70,15 @@ setInterval(function () {
 var countActive = $('#todo-list li').not('.completed').length;
 
 var countCompleted = $('#todo-list li.completed').length;
+
+if(countCompleted === 0) {
+  var ifCompleted = 'hide';
+}
 //These are examples, please remove and replace with your own code
 $('#todoapp footer').html(footerTemplate({
     activeTodoCount: countActive,
     completedTodos: countCompleted,
-    completedClass: 'hide'
+    completedClass: ifCompleted
 }));
 
 }, 1000);
