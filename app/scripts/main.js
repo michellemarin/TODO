@@ -58,8 +58,6 @@ $('#todoapp footer').on('click', 'li a.all', function (event) {
 });
 
 
-
-
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
     id: 1,
@@ -68,10 +66,15 @@ $('#todo-list').append(todoTemplate({
     checked: 'checked'
 }));
 
+setInterval(function () {
+var countActive = $('#todo-list li').not('.completed').length;
 
+var countCompleted = $('#todo-list li.completed').length;
 //These are examples, please remove and replace with your own code
 $('#todoapp footer').html(footerTemplate({
-    activeTodoCount: 0,
-    completedTodos: 0,
+    activeTodoCount: countActive,
+    completedTodos: countCompleted,
     completedClass: 'hide'
 }));
+
+}, 1000);
