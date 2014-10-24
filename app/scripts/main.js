@@ -34,6 +34,9 @@ $('#todo-list').on('click', 'li button.destroy', function (event) {
   $(this).parent().remove();
 });
 
+$('#main').on('click', '#toggle-all', function (event) {
+  $('#todo-list').children('li').toggleClass('completed');
+});
 
 $('#todoapp footer').on('click', 'li a.completed', function (event) {
   var activeTodos = $('#todo-list li');
