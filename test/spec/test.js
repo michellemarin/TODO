@@ -3,10 +3,13 @@
 (function () {
     'use strict';
 
-    describe('Give it some context', function () {
-        describe('maybe a bit more context here', function () {
-            it('should run here few assertions', function () {
-
+    describe('TODO APP', function () {
+        describe('updateTodoClassOnClick', function () {
+            it('should change the todo class to completed after
+            I run this function', function () {
+              var myTodo = "<li></li>";
+              myTodo = updateTodoClssOnClick(myTodo);
+              expect($ (myTodo).hasClass('completed') ).to.be.true;
             });
         });
     });

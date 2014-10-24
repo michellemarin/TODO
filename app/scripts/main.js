@@ -26,6 +26,11 @@ $('#new-todo').keypress(function(e) {
   }
 });
 
+$('#todo-list').on('click', 'li input.toggle', function (event) {
+  $(this).closest('li').toggleClass('completed');
+});
+
+
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
     id: 1,
