@@ -30,6 +30,10 @@ $('#todo-list').on('click', 'li input.toggle', function (event) {
   $(this).closest('li').toggleClass('completed');
 });
 
+$('#todo-list').on('click', 'li button.destroy', function (event) {
+  $(this).parent().remove();
+});
+
 
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
