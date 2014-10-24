@@ -35,6 +35,31 @@ $('#todo-list').on('click', 'li button.destroy', function (event) {
 });
 
 
+$('#todoapp footer').on('click', 'li a.completed', function (event) {
+  var activeTodos = $('#todo-list li');
+  var completedTodos = $('#todo-list li.completed');
+  $(activeTodos).not('.completed').hide();
+  $(completedTodos).show();
+  console.log('hello');
+});
+
+$('#todoapp footer').on('click', 'li a.active', function (event) {
+  var completedTodos = $('#todo-list li.completed');
+  var activeTodos = $('#todo-list li');
+  $(completedTodos).hide();
+  $(activeTodos).not('.completed').show();
+  console.log('hello');
+});
+
+$('#todoapp footer').on('click', 'li a.all', function (event) {
+  var allTheTodos = $('#todo-list li');
+  $(allTheTodos).show();
+  console.log('hello');
+});
+
+
+
+
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
     id: 1,
