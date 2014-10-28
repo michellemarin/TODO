@@ -3,8 +3,6 @@ _.templateSettings = {
   interpolate: /\{\{=(.+?)\}\}/g
 };
 
-TodoCollection = { };
-
 var todoTemplate   = _.template( $('#todo-template').html() );
 var footerTemplate = _.template( $('#footer-template').html() );
 // Don't remove anything above this line ----------------------- //
@@ -47,6 +45,7 @@ $('#todoapp footer').on('click', 'li a.completed', function (event) {
   var completedTodos = $('#todo-list li.completed');
   $(activeTodos).not('.completed').hide();
   $(completedTodos).show();
+  console.log('hello');
 });
 
 $('#todoapp footer').on('click', 'li a.active', function (event) {
@@ -54,17 +53,15 @@ $('#todoapp footer').on('click', 'li a.active', function (event) {
   var activeTodos = $('#todo-list li');
   $(completedTodos).hide();
   $(activeTodos).not('.completed').show();
+  console.log('hello');
 });
 
 $('#todoapp footer').on('click', 'li a.all', function (event) {
   var allTheTodos = $('#todo-list li');
   $(allTheTodos).show();
+  console.log('hello');
 });
 
-$('#todoapp footer').on('click', 'li', function (event) {
-  $(this).siblings().removeClass('selected');
-  $(this).addClass('selected');
-});
 
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
