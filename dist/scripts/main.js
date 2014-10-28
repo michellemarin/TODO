@@ -23,8 +23,45 @@ $('#new-todo').keypress(function(e) {
     $('#todo-list').append(todoTemplate(new Todo({
       title: $(this).val()
     })));
+    $(this).val("");
   }
 });
+
+
+$('#todo-list').on('click', 'li input.toggle', function (event) {
+  $(this).closest('li').toggleClass('completed');
+});
+
+$('#todo-list').on('click', 'li button.destroy', function (event) {
+  $(this).parent().remove();
+});
+
+$('#main').on('click', '#toggle-all', function (event) {
+  $('#todo-list').children('li').toggleClass('completed');
+});
+
+$('#todoapp footer').on('click', 'li a.completed', function (event) {
+  var activeTodos = $('#todo-list li');
+  var completedTodos = $('#todo-list li.completed');
+  $(activeTodos).not('.completed').hide();
+  $(completedTodos).show();
+  console.log('hello');
+});
+
+$('#todoapp footer').on('click', 'li a.active', function (event) {
+  var completedTodos = $('#todo-list li.completed');
+  var activeTodos = $('#todo-list li');
+  $(completedTodos).hide();
+  $(activeTodos).not('.completed').show();
+  console.log('hello');
+});
+
+$('#todoapp footer').on('click', 'li a.all', function (event) {
+  var allTheTodos = $('#todo-list li');
+  $(allTheTodos).show();
+  console.log('hello');
+});
+
 
 //These are examples, please remove and replace with your own code
 $('#todo-list').append(todoTemplate({
@@ -34,10 +71,19 @@ $('#todo-list').append(todoTemplate({
     checked: 'checked'
 }));
 
+setInterval(function () {
+var countActive = $('#todo-list li').not('.completed').length;
 
+var countCompleted = $('#todo-list li.completed').length;
+
+if(countCompleted === 0) {
+  var ifCompleted = 'hide';
+}
 //These are examples, please remove and replace with your own code
 $('#todoapp footer').html(footerTemplate({
-    activeTodoCount: 0,
-    completedTodos: 0,
-    completedClass: 'hide'
+    activeTodoCount: countActive,
+    completedTodos: countCompleted,
+    completedClass: ifCompleted
 }));
+
+}, 1000);
